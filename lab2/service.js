@@ -7,6 +7,12 @@ const getFromDomain = async () => {
   return res.data;
 };
 
+const getNewsText = async (query) => {
+  const res = await axios.get(query, { responseType: "document" });
+  return res.data;
+};
+
 module.exports = {
   getFromDomain,
+  getNewsText,
 };

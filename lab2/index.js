@@ -1,4 +1,4 @@
-const { getFromDomain } = require("./service");
+const { getFromDomain, getNewsText } = require("./service");
 const cheerio = require("cheerio");
 const fs = require("fs");
 const path = require("path");
@@ -9,16 +9,23 @@ if (!fs.existsSync(newsDir)) {
 }
 
 const newsTitles = [];
+const urls = [];
 
 getFromDomain().then((res) => {
   let $ = cheerio.load(res);
   let $article = $("article");
   $article.each((i, el) => {
-    newsTitles.push($(el).find("h4").text().trim());
+    newsTitles.push($(el).find("h4").text());
+    urls.push($(el).find("h4").find("a").attr("href"));
   });
 
-  for (let title of newsTitles) {
-    const filename = path.join(newsDir, `${title}.txt`);
-    fs.writeFileSync(filename, title);
+  for (let i = 0; i < newsTitles.length; i++) {
+    getNewsText(urls[i]).then((res) => {
+      let $$ = cheerio.load(res);
+      let $$article = $$("article").find("p").text();
+
+      const filename = path.join(newsDir, `${newsTitles[i]}.txt`);
+      fs.writeFileSync(filename, $$article);
+    });
   }
 });
