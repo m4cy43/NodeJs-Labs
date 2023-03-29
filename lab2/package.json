@@ -4,7 +4,7 @@
   "description": "Nodejs lab2",
   "main": "index.js",
   "scripts": {
-    "test": "node .\\index.js"
+    "start": "node .\\index.js"
   },
   "author": "Andrii, Bogdan, Violetta",
   "license": "ISC",

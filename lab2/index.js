@@ -1,31 +1,26 @@
-const { getFromDomain, getNewsText } = require("./service");
-const cheerio = require("cheerio");
 const fs = require("fs");
-const path = require("path");
+const http = require("http");
+const { scrape } = require("./scrape");
 
-const newsDir = path.join(__dirname, "news");
-if (!fs.existsSync(newsDir)) {
-  fs.mkdirSync(newsDir);
-}
-
-const newsTitles = [];
-const urls = [];
-
-getFromDomain().then((res) => {
-  let $ = cheerio.load(res);
-  let $article = $("article");
-  $article.each((i, el) => {
-    newsTitles.push($(el).find("h4").text());
-    urls.push($(el).find("h4").find("a").attr("href"));
+const server = http.createServer((req, res) => {
+  fs.readdir(__dirname + "/news", (err, files) => {
+    if (err) {
+      res.writeHead(500, { "Content-Type": "text/plain" });
+      res.write("Error reading directory");
+      res.end();
+    } else {
+      res.writeHead(200, { "Content-Type": "text/plain; charset=utf-8" });
+      res.write(files.join("\n"));
+      res.end();
+    }
   });
+});
 
-  for (let i = 0; i < newsTitles.length; i++) {
-    getNewsText(urls[i]).then((res) => {
-      let $$ = cheerio.load(res);
-      let $$article = $$("article").find("p").text();
-
-      const filename = path.join(newsDir, `${newsTitles[i]}.txt`);
-      fs.writeFileSync(filename, $$article);
-    });
-  }
+server.listen(3000, "localhost", function () {
+  console.log(
+    "... port %d in %s address",
+    server.address().port,
+    server.address().address
+  );
+  setInterval(scrape, 60 * 1000);
 });
