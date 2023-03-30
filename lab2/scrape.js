@@ -1,5 +1,5 @@
 const { getFromDomain, getNewsText } = require("./service");
-const cheerio = require("cheerio");
+const { JSDOM } = require("jsdom");
 const fs = require("fs");
 const path = require("path");
 
@@ -13,20 +13,30 @@ const scrape = () => {
   const urls = [];
 
   getFromDomain().then((res) => {
-    let $ = cheerio.load(res);
-    let $article = $("article");
-    $article.each((i, el) => {
-      newsTitles.push($(el).find("h4").text());
-      urls.push($(el).find("h4").find("a").attr("href"));
-    });
+    let dom = new JSDOM(res);
+    let titles = dom.window.document.querySelectorAll(".entry-title");
+    for (let title of titles) {
+      newsTitles.push(title.textContent);
+    }
+    let href = dom.window.document.querySelectorAll(".entry-title a");
+    for (let hr of href) {
+      urls.push(hr.href);
+    }
 
     for (let i = 0; i < newsTitles.length; i++) {
       getNewsText(urls[i]).then((res) => {
-        let $$ = cheerio.load(res);
-        let $$article = $$("article").find("p").text();
+        let dom = new JSDOM(res);
+        let paragraphs = dom.window.document.querySelectorAll("article p");
+        let desc = "";
+        for (let p of paragraphs) {
+          desc = desc + p.textContent + "\n";
+        }
 
-        const filename = path.join(newsDir, `${newsTitles[i].trim()}.txt`);
-        fs.writeFileSync(filename, $$article);
+        const filename = path.join(
+          newsDir,
+          `${newsTitles[i].substring(0, 30)}....txt`
+        );
+        fs.writeFileSync(filename, desc);
       });
     }
   });

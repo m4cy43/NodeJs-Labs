@@ -3,7 +3,7 @@ const axios = require("axios");
 const URL = "http://fiot.kpi.ua/";
 
 const getFromDomain = async () => {
-  const res = await axios.get(URL + "", { responseType: "document" });
+  const res = await axios.get(URL + "", { Accept: "text/html" });
   return res.data;
 };
 
