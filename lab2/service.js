@@ -8,7 +8,7 @@ const getFromDomain = async () => {
 };
 
 const getNewsText = async (query) => {
-  const res = await axios.get(query, { responseType: "document" });
+  const res = await axios.get(query, { Accept: "text/html" });
   return res.data;
 };
 
