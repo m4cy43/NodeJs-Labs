@@ -1,0 +1,49 @@
+.finances {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+.fn-block {
+    width: 50%;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+    background-color: white;
+}
+.quantity-ear, .quantity-exp {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    font-size: 22px;
+}
+#earnings-money, .quantity-ear {
+    font-weight: bold;
+    color: #00b200;
+}
+#expenses-money, .quantity-exp {
+    font-weight: bold;
+    color: #d50000;
+}
+.amount-div {
+    font-size: 18px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px;
+}
+.fn-hr {
+    width: 98%;
+    border: 1px solid rgb(116, 116, 116);
+}

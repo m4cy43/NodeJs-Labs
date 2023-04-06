@@ -25,14 +25,16 @@ const rows = [
 ];
 
 export default function DataTable() {
-  return (
-    <div style={{ height: '100%', width: '100%' }}>
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
-      />
-    </div>
-  );
+    return (
+        <div style={{ height: '100%', width: '100%' }}>
+            <DataGrid
+                rows={rows}
+                columns={columns}
+                initialState={{
+                    pagination:{ paginationModel: { pageSize: 10 } },
+                }}
+                disableColumnSelector={true} // disable "hide all" and "manage columns"
+            />
+        </div>
+    );
 }

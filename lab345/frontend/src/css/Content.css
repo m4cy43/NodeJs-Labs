@@ -3,17 +3,17 @@
     display: flex;
     flex-direction: column;
     width: 80%;
-    border-left: 1px solid #4a174c;
+    border-left: 1px solid #902598;
     padding: 60px 40px 40px 40px;
 } 
 .content__nav-title {
     font-size: 30px;
     font-weight: 600;
     margin: 15px 0;
-    color: #4a174c;
+    color: #902598;
 }
 hr {
-    border: 1px solid #4a174c;
+    border: 1px solid #902598;
     margin-bottom: 20px;
     width: 100%;
 }

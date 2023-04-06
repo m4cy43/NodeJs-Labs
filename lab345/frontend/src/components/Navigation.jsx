@@ -1,9 +1,22 @@
 import React from 'react';
 import cartIcon from '../images/shopping-cart.svg';
 import listIcon from '../images/list.svg';
-import categoryIcon from '../images/category.svg';
+import categoryIcon from '../images/folders.svg';
 import walletIcon from '../images/wallet.svg';
+import userIcon from '../images/user.svg';
 import '../css/Navigation.css';
+
+const menuItems = [
+    {
+        id: 'Navigation',
+        children: [
+            { id: 'Full list', url: '/', icon: listIcon, },
+            { id: 'Categories', url: 'categories', icon: categoryIcon, },
+            { id: 'Finances', url: 'finances', icon: walletIcon, },
+            { id: 'Users', url: 'users', icon: userIcon, },
+        ],
+    },
+];
 
 const Navigation = (props) => {
     return (
@@ -20,15 +33,19 @@ const Navigation = (props) => {
                         <div className='nav-link'><a href="">Full list</a></div>
                     </div>
 
-                    {/* В таблиці є сортування за категоріями, тому невпевнена, чи потрібна */}
-                    {/* <div className='navbar__link'>
+                    <div className='navbar__link'>
                         <div className='nav-link'><img className='link-icon' src={categoryIcon} alt="category" /></div>
                         <div className='nav-link'><a href="">Categories</a></div>
-                    </div> */}
+                    </div>
                     
                     <div className='navbar__link'>
                         <div className='nav-link'><img className='link-icon' src={walletIcon} alt="wallet" /></div>
-                        <div className='nav-link'><a href="">Wallet</a></div>
+                        <div className='nav-link'><a href="">Finances</a></div>
+                    </div>
+
+                    <div className='navbar__link'>
+                        <div className='nav-link'><img className='link-icon' src={userIcon} alt="user" /></div>
+                        <div className='nav-link'><a href="">Users</a></div>
                     </div>
                 </div>
             </div>
