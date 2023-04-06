@@ -2,6 +2,8 @@ import React from 'react';
 import '../css/Content.css';
 import DataTable from './DataTable';
 import Finances from './Finances';
+import Categories from './Categories';
+import Users from './Users.jsx';
 
 function Content(props) {
     return (
@@ -13,17 +15,17 @@ function Content(props) {
             {/* <DataTable /> */}
 
 
-            <div className='content__nav-title'>Finances</div>
+            {/* <div className='content__nav-title'>Finances</div>
             <hr></hr>
-            <Finances />
+            <Finances /> */}
 
             {/* <div className='content__nav-title'>Categories</div>
             <hr></hr>
-            <Categories />
+            <Categories /> */}
 
             <div className='content__nav-title'>Users</div>
             <hr></hr>
-            <Users /> */}
+            <Users />
 
         </div>
     );
