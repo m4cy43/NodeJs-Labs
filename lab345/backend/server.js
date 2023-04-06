@@ -15,6 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // ALL ROUTES
+
 // TODO
 
 // LAST IN MIDDLEWARE!
