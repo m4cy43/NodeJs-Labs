@@ -1,6 +1,6 @@
 const express = require("express");
 const dotenv = require("dotenv").config({
-  path: "../.env",
+  path: ".env",
 });
 const { errorHandler } = require("./middleware/errorMiddleware");
 const dbConnect = require("./config/db");
@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // ALL ROUTES
-
+app.use("/api/v1/user", require("./routes/userRoute"));
 // TODO
 
 // LAST IN MIDDLEWARE!

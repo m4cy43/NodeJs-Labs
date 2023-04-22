@@ -10,13 +10,25 @@ const {
   deleteFinance,
 } = require("../controllers/financeController");
 
+// Auth middleware
+// Routes protection
+const authProtection = require("../middleware/authMiddleware");
+
 // GET /api/v1/finance
 // POST /api/v1/finance
 // GET /api/v1/finance?page=_&items=_
-router.route("/").get(getFinanceAll).post(setFinance).get(getFinanceQ);
+router
+  .route("/")
+  .get(authProtection, getFinanceAll)
+  .post(authProtection, setFinance)
+  .get(authProtection, getFinanceQ);
 // GET /api/v1/finance/{uuid}
 // DELETE /api/v1/finance/{uuid}
 // UPDATE /api/v1/finance/{uuid}
-router.route("/:id").get(getFinanceId).delete(deleteFinance).put(updateFinance);
+router
+  .route("/:id")
+  .get(authProtection, getFinanceId)
+  .delete(authProtection, deleteFinance)
+  .put(authProtection, updateFinance);
 
 module.exports = router;
