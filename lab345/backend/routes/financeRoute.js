@@ -14,17 +14,17 @@ const {
 // Routes protection
 const authProtection = require("../middleware/authMiddleware");
 
-// GET /api/v1/finance
-// POST /api/v1/finance
-// GET /api/v1/finance?page=_&items=_
+// GET /api/v1/fin
+// POST /api/v1/fin
+// GET /api/v1/fin?page=_&items=_
 router
   .route("/")
   .get(authProtection, getFinanceAll)
   .post(authProtection, setFinance)
   .get(authProtection, getFinanceQ);
-// GET /api/v1/finance/{uuid}
-// DELETE /api/v1/finance/{uuid}
-// UPDATE /api/v1/finance/{uuid}
+// GET /api/v1/fin/:uuid
+// DELETE /api/v1/fin/:uuid
+// UPDATE /api/v1/fin/:uuid
 router
   .route("/:id")
   .get(authProtection, getFinanceId)

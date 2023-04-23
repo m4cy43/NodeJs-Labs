@@ -8,13 +8,13 @@ const {
 
 // Auth middleware
 // Routes protection
-const authProtection = require("../middleware/authMiddleware");
+const auth = require("../middleware/authMiddleware");
 
-// POST /api/user/signup
+// POST /api/v1/user/signup
 router.post("/signup", createUser);
-// POST /api/user/login
+// POST /api/v1/user/login
 router.post("/login", loginUser);
-// GET /api/user/authuser
-router.get("/authuser", authProtection, getAuthUser);
+// GET /api/v1/user/me
+router.get("/me", auth, getAuthUser);
 
 module.exports = router;

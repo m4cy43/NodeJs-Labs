@@ -1,43 +1,66 @@
 const asyncHandler = require("express-async-handler");
 
-const Goal = require("../models/goalModel");
-const User = require("../models/userModel");
+const Finance = require("../models/financeModel");
 
-// @desc    Get goals
-// @route   GET /api/goals
+// @desc    Get all finances
+// @route   GET /api/v1/fin
 // @access  Private
-const getGoals = asyncHandler(async (req, res) => {
-  const goals = await Goal.find({ user: req.user.id });
+const getFinanceAll = asyncHandler(async (req, res) => {
+  const fin = await Finance.find({ user: req.user.id });
 
-  res.status(200).json(goals);
+  res.status(200).json(fin);
 });
 
-// @desc    Set goal
-// @route   POST /api/goals
+// @desc    Get fin
+// @route   GET /api/v1/fin/:id
 // @access  Private
-const setGoal = asyncHandler(async (req, res) => {
-  if (!req.body.text) {
+const getFinanceId = asyncHandler(async (req, res) => {
+  const fin = await Finance.findById(req.params.id);
+
+  res.status(200).json(fin);
+});
+
+// @desc    Get fin
+// @route   GET /api/v1/fin?page=_&items=_
+// @access  Private
+const getFinanceQ = asyncHandler(async (req, res) => {
+  if (!req.query.page || !req.query.items) {
     res.status(400);
-    throw new Error("Please add a text field");
+    throw new Error("Please set query correctly");
   }
 
-  const goal = await Goal.create({
-    text: req.body.text,
+  const fin = await Finance.findById({ user: req.user.id });
+
+  res.status(200).json(fin.substring(req.query.page, req.query.items));
+});
+
+// @desc    Set fin
+// @route   POST /api/v1/fin
+// @access  Private
+const setFinance = asyncHandler(async (req, res) => {
+  if (!req.body.sum | !req.body.purchaseId) {
+    res.status(400);
+    throw new Error("Please check the fields");
+  }
+
+  const fin = await Finance.create({
     user: req.user.id,
+    purchase: req.body.purchaseId,
+    sum: req.body.sum,
   });
 
-  res.status(200).json(goal);
+  res.status(200).json(fin);
 });
 
-// @desc    Update goal
-// @route   PUT /api/goals/:id
+// @desc    Update fin
+// @route   PUT /api/v1/fin/:id
 // @access  Private
-const updateGoal = asyncHandler(async (req, res) => {
-  const goal = await Goal.findById(req.params.id);
+const updateFinance = asyncHandler(async (req, res) => {
+  const fin = await Finance.findById(req.params.id);
 
-  if (!goal) {
+  if (!fin) {
     res.status(400);
-    throw new Error("Goal not found");
+    throw new Error("Finance not found");
   }
 
   // Check for user
@@ -46,28 +69,32 @@ const updateGoal = asyncHandler(async (req, res) => {
     throw new Error("User not found");
   }
 
-  // Make sure the logged in user matches the goal user
-  if (goal.user.toString() !== req.user.id) {
+  // Make sure the logged in user matches the fin user
+  if (fin.user.toString() !== req.user.id) {
     res.status(401);
     throw new Error("User not authorized");
   }
 
-  const updatedGoal = await Goal.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-  });
+  const updatedFinance = await Finance.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    {
+      new: true,
+    }
+  );
 
-  res.status(200).json(updatedGoal);
+  res.status(200).json(updatedFinance);
 });
 
-// @desc    Delete goal
-// @route   DELETE /api/goals/:id
+// @desc    Delete fin
+// @route   DELETE /api/v1/fin/:id
 // @access  Private
-const deleteGoal = asyncHandler(async (req, res) => {
-  const goal = await Goal.findById(req.params.id);
+const deleteFinance = asyncHandler(async (req, res) => {
+  const fin = await Finance.findById(req.params.id);
 
-  if (!goal) {
+  if (!fin) {
     res.status(400);
-    throw new Error("Goal not found");
+    throw new Error("Finance not found");
   }
 
   // Check for user
@@ -76,20 +103,22 @@ const deleteGoal = asyncHandler(async (req, res) => {
     throw new Error("User not found");
   }
 
-  // Make sure the logged in user matches the goal user
-  if (goal.user.toString() !== req.user.id) {
+  // Make sure the logged in user matches the fin user
+  if (fin.user.toString() !== req.user.id) {
     res.status(401);
     throw new Error("User not authorized");
   }
 
-  await goal.remove();
+  await fin.findByIdAndDelete(req.params.id);
 
   res.status(200).json({ id: req.params.id });
 });
 
 module.exports = {
-  getGoals,
-  setGoal,
-  updateGoal,
-  deleteGoal,
+  getFinanceAll,
+  setFinance,
+  getFinanceQ,
+  getFinanceId,
+  updateFinance,
+  deleteFinance,
 };

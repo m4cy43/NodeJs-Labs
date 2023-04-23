@@ -16,6 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // ALL ROUTES
 app.use("/api/v1/user", require("./routes/userRoute"));
+app.use("/api/v1/cat", require("./routes/categoryRoute"));
 // TODO
 
 // LAST IN MIDDLEWARE!
