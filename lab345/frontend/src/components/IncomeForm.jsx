@@ -26,7 +26,7 @@ function IncomeForm() {
 
   return (
     <>
-        <IconButton onClick={handleOpen}>
+        <IconButton onClick={handleOpen} sx={{ width: '20%', ml: 1, mr: 1, }}>
             <AddCircleOutlineIcon fontSize="small" />
         </IconButton>
         <Modal
@@ -37,7 +37,7 @@ function IncomeForm() {
             <Box sx={style}>
                 <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: 0}}>
                     <h2 id="modal-modal-title">Enter income</h2>
-                    <IconButton onClick={handleClose}><CloseIcon /></IconButton>
+                    <IconButton onClick={handleClose} sx={{width: '15%'}}><CloseIcon /></IconButton>
                 </div>
                 <p id="modal-modal-description" sx={{ mt: 2 }}>
                     <TextField
