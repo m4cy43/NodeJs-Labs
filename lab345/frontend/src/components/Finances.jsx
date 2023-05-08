@@ -4,7 +4,7 @@ import FinancesTable from './FinancesTable';
 import IncomeForm from './IncomeForm';
 import FinancesTable2 from './FinancesTable2';
 
-function Wallet() {
+function Finances() {
     return (
         <div className='finances'>
             <div className="fn-block">
@@ -28,4 +28,4 @@ function Wallet() {
     );
 }
 
-export default Wallet;
+export default Finances;
