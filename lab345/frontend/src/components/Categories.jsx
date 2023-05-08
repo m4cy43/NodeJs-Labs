@@ -6,6 +6,8 @@ function Categories() {
     const [categories, setCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('All');
     // const [purchases, setPurchases] = useState([]);
+
+    // test data
     const [purchases, setPurchases] = useState([
         {
             id: 1,
