@@ -6,7 +6,6 @@ const financeSchema = mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: "User",
-      unique: true,
     },
     purchase: {
       type: mongoose.Schema.Types.ObjectId,

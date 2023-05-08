@@ -20,8 +20,9 @@ const authProtection = require("../middleware/authMiddleware");
 router
   .route("/")
   .get(authProtection, getFinanceAll)
-  .post(authProtection, setFinance)
-  .get(authProtection, getFinanceQ);
+  .post(authProtection, setFinance);
+// GET /api/v1/fin?page=_&items=_
+router.route("/q").get(authProtection, getFinanceQ);
 // GET /api/v1/fin/:uuid
 // DELETE /api/v1/fin/:uuid
 // UPDATE /api/v1/fin/:uuid

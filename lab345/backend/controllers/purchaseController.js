@@ -1,12 +1,12 @@
 const asyncHandler = require("express-async-handler");
 
-const Purchase = require("../models/puranceModel");
+const Purchase = require("../models/purchaseModel");
 
 // @desc    Get all purances
 // @route   GET /api/v1/pur
 // @access  Private
 const getPurchaseAll = asyncHandler(async (req, res) => {
-  const pur = await Purchase.find({ user: req.user.id });
+  const pur = await Purchase.find({});
 
   res.status(200).json(pur);
 });
@@ -24,7 +24,7 @@ const getPurchaseId = asyncHandler(async (req, res) => {
 // @route   POST /api/v1/pur
 // @access  Private
 const setPurchase = asyncHandler(async (req, res) => {
-  if (!req.body.name | !req.body.categoryId) {
+  if (!req.body.name || !req.body.categoryId) {
     res.status(400);
     throw new Error("Please check the fields");
   }
@@ -70,7 +70,7 @@ const deletePurchase = asyncHandler(async (req, res) => {
     throw new Error("Purchase not found");
   }
 
-  await pur.findByIdAndDelete(req.params.id);
+  await Purchase.findByIdAndDelete(req.params.id);
 
   res.status(200).json({ id: req.params.id });
 });

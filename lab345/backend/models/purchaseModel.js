@@ -6,7 +6,6 @@ const purchaseSchema = mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: "Category",
-      unique: true,
     },
     name: {
       type: String,

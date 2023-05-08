@@ -6,7 +6,9 @@ const Finance = require("../models/financeModel");
 // @route   GET /api/v1/fin
 // @access  Private
 const getFinanceAll = asyncHandler(async (req, res) => {
-  const fin = await Finance.find({ user: req.user.id });
+  const fin = await Finance.find({ user: req.user.id }).sort({
+    updatedAt: "desc",
+  });
 
   res.status(200).json(fin);
 });
@@ -21,7 +23,7 @@ const getFinanceId = asyncHandler(async (req, res) => {
 });
 
 // @desc    Get fin
-// @route   GET /api/v1/fin?page=_&items=_
+// @route   GET /api/v1/fin/q?page=_&items=_
 // @access  Private
 const getFinanceQ = asyncHandler(async (req, res) => {
   if (!req.query.page || !req.query.items) {
@@ -29,9 +31,16 @@ const getFinanceQ = asyncHandler(async (req, res) => {
     throw new Error("Please set query correctly");
   }
 
-  const fin = await Finance.findById({ user: req.user.id });
+  const page = (req.query.page - 1) * req.query.items;
+  const items = req.query.items;
+  const fin = await Finance.find({ user: req.user.id })
+    .sort({
+      updatedAt: "desc",
+    })
+    .skip(page)
+    .limit(items);
 
-  res.status(200).json(fin.substring(req.query.page, req.query.items));
+  res.status(200).json(fin);
 });
 
 // @desc    Set fin
@@ -109,7 +118,7 @@ const deleteFinance = asyncHandler(async (req, res) => {
     throw new Error("User not authorized");
   }
 
-  await fin.findByIdAndDelete(req.params.id);
+  await Finance.findByIdAndDelete(req.params.id);
 
   res.status(200).json({ id: req.params.id });
 });
