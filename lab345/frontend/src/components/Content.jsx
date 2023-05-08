@@ -1,18 +1,18 @@
 import React from 'react';
 import '../css/Content.css';
-import DataTable from './DataTable';
 import Finances from './Finances';
 import Categories from './Categories';
 import Users from './Users.jsx';
+import Purchases from './Purchases';
 
 function Content(props) {
     return (
         <div className='content'>
             {/* cюди передавати title з через навігацію ? */}
             
-            {/* <div className='content__nav-title'>Full list</div>
-            <hr></hr> */}
-            {/* <DataTable /> */}
+            {/* <div className='content__nav-title'>Purchases</div>
+            <hr></hr>
+            <Purchases /> */}
 
 
             {/* <div className='content__nav-title'>Finances</div>

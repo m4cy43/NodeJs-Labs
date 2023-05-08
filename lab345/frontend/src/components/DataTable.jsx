@@ -2,10 +2,10 @@ import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 
 const columns = [
-    { field: 'id', headerName: 'ID', width: 80 },
-    { field: 'purchase', headerName: 'Purchase', width: 450 },
-    { field: 'category', headerName: 'Category', width: 220 },
-    { field: 'price', headerName: 'Price', type: 'number', width: 130 },
+    { field: 'id', headerName: 'ID', width: 50 },
+    { field: 'purchase', headerName: 'Purchase', width: 360 },
+    { field: 'category', headerName: 'Category', width: 180 },
+    { field: 'price', headerName: 'Price', type: 'number', width: 110 },
     { field: 'date', headerName: 'Date', type: 'number', width: 150 },
 ];
 
@@ -26,13 +26,14 @@ const rows = [
 
 export default function DataTable() {
     return (
-        <div style={{ height: '100%', width: '100%' }}>
+        <div style={{ height: '400px', width: '920px' }}>
             <DataGrid
                 rows={rows}
                 columns={columns}
                 initialState={{
                     pagination:{ paginationModel: { pageSize: 10 } },
                 }}
+                rowsPerPage={[1]}
                 disableColumnSelector={true} // disable "hide all" and "manage columns"
             />
         </div>
