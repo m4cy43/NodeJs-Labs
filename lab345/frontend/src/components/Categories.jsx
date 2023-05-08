@@ -125,26 +125,28 @@ function Categories() {
                 <div><AddCategory/></div>
             </div>
             <div className="table-div">
-                <table>
-                    <thead>
-                        <tr>
-                        <th>Name</th>
-                        <th>Category</th>
-                        <th>Price</th>
-                        <th>Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {purchases.map(purchase => (
-                        <tr key={purchase.id}>
-                            <td>{purchase.name}</td>
-                            <td>{purchase.category}</td>
-                            <td>{purchase.price}</td>
-                            <td>{purchase.date}</td>
-                        </tr>
-                        ))}
-                    </tbody>
-                </table>
+                <div className="table-block">
+                    <table>
+                        <thead>
+                            <tr>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {purchases.map(purchase => (
+                            <tr key={purchase.id}>
+                                <td>{purchase.name}</td>
+                                <td>{purchase.category}</td>
+                                <td>{purchase.price}</td>
+                                <td>{purchase.date}</td>
+                            </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     );
