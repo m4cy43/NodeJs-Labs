@@ -1,12 +1,17 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 
+const tableStyle = {
+    height: 400,
+    width: '100%',
+};
+
 const columns = [
-    { field: 'id', headerName: 'ID', width: 50 },
+    { field: 'id', headerName: 'ID', width: 60 },
     { field: 'purchase', headerName: 'Purchase', width: 360 },
     { field: 'category', headerName: 'Category', width: 180 },
-    { field: 'price', headerName: 'Price', type: 'number', width: 110 },
-    { field: 'date', headerName: 'Date', type: 'number', width: 150 },
+    { field: 'price', headerName: 'Price', type: 'number', width: 120 },
+    { field: 'date', headerName: 'Date', type: 'number', width: 160 },
 ];
 
 const rows = [
@@ -26,7 +31,7 @@ const rows = [
 
 export default function DataTable() {
     return (
-        <div style={{ height: '400px', width: '920px' }}>
+        <div style={tableStyle}>
             <DataGrid
                 rows={rows}
                 columns={columns}

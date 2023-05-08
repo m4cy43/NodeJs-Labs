@@ -34,7 +34,7 @@ const buttonStyle = {
     }
 };
 const dropdownStyle = { 
-    width: '40%',
+    width: '60%',
     padding: '5px 0',
     borderColor: 'lightgray',
 
@@ -58,9 +58,9 @@ function AddPurchase() {
             <Box sx={boxStyle}>
                 <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: 0}}>
                     <h3 id="modal-modal-title">Enter your new purchase</h3>
-                    <IconButton onClick={handleClose}><CloseIcon /></IconButton>
+                    <IconButton onClick={handleClose} sx={{width: '15%'}}><CloseIcon /></IconButton>
                 </div>
-                <p id="modal-modal-description" sx={{ mt: 2, width: '100%' }}>
+                <p id="modal-modal-description" sx={{ mt: 2 }}>
                     <TextField
                         id="outlined-basic"
                         label="Name"
@@ -91,7 +91,7 @@ function AddPurchase() {
                         variant="outlined"
                     />
                 </p>
-                <Button variant="contained" style={{backgroundColor: '#902598'}} onClick={handleClose}>Add</Button>
+                <Button variant="contained" style={{backgroundColor: '#902598', width: '20%'}} onClick={handleClose}>Add</Button>
             </Box>
         </Modal>
     </>

@@ -10,18 +10,18 @@ function Content(props) {
         <div className='content'>
             {/* cюди передавати title з через навігацію ? */}
             
-            {/* <div className='content__nav-title'>Purchases</div>
+            <div className='content__nav-title'>Purchases</div>
             <hr></hr>
-            <Purchases /> */}
+            <Purchases />
 
 
             {/* <div className='content__nav-title'>Finances</div>
             <hr></hr>
             <Finances /> */}
 
-            <div className='content__nav-title'>Categories</div>
+            {/* <div className='content__nav-title'>Categories</div>
             <hr></hr>
-            <Categories />
+            <Categories /> */}
 
             {/* <div className='content__nav-title'>Users</div>
             <hr></hr>
