@@ -1,0 +1,55 @@
+#shopping-table-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+#table-div {
+    width: 100%;
+    overflow: auto;
+    max-height: 370px;
+    border: 1px solid rgb(161, 161, 161);
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+}
+th, td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+th {
+    background-color: #9269a0;
+    font-weight: bold;
+}
+tr {
+    background-color: #f0f0f0;
+}
+  
+#page-numbers {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+  
+#page-numbers li {
+    margin-right: 5px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    background-color: #9269a0;
+    border: 1px solid #532d5f;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+  
+#page-numbers li:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+  

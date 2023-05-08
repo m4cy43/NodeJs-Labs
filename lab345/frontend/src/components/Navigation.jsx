@@ -5,20 +5,23 @@ import categoryIcon from '../images/folders.svg';
 import walletIcon from '../images/wallet.svg';
 import userIcon from '../images/user.svg';
 import '../css/Navigation.css';
+import { useState } from 'react';
 
 const menuItems = [
     {
         id: 'Navigation',
         children: [
-            { id: 'Purchases', url: '/', icon: listIcon, },
-            { id: 'Categories', url: 'categories', icon: categoryIcon, },
-            { id: 'Finances', url: 'finances', icon: walletIcon, },
-            { id: 'Users', url: 'users', icon: userIcon, },
+            { id: 'Purchases', url: 'purchases', icon: listIcon },
+            { id: 'Categories', url: 'categories', icon: categoryIcon },
+            { id: 'Finances', url: 'finances', icon: walletIcon },
+            { id: 'Users', url: 'users', icon: userIcon },
         ],
     },
-];
+  ];
 
 const Navigation = (props) => {
+
+
     return (
         <div className='navbar'>
             <div className='navbar__logo'>

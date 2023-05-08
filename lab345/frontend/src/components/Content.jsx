@@ -4,6 +4,7 @@ import Finances from "./Finances";
 import Categories from "./Categories";
 import Users from "./Users.jsx";
 import Purchases from "./Purchases";
+import { useState } from "react";
 
 function Content(props) {
   return (
@@ -14,13 +15,13 @@ function Content(props) {
             <hr></hr>
             <Purchases /> */}
 
-      {/* <div className='content__nav-title'>Finances</div>
-            <hr></hr>
-            <Finances /> */}
-
-      <div className="content__nav-title">Categories</div>
+      <div className="content__nav-title">Finances</div>
       <hr></hr>
-      <Categories />
+      <Finances />
+
+      {/* <div className='content__nav-title'>Categories</div>
+            <hr></hr>
+            <Categories /> */}
 
       {/* <div className='content__nav-title'>Users</div>
             <hr></hr>
