@@ -10,7 +10,7 @@ const menuItems = [
     {
         id: 'Navigation',
         children: [
-            { id: 'Full list', url: '/', icon: listIcon, },
+            { id: 'Purchases', url: '/', icon: listIcon, },
             { id: 'Categories', url: 'categories', icon: categoryIcon, },
             { id: 'Finances', url: 'finances', icon: walletIcon, },
             { id: 'Users', url: 'users', icon: userIcon, },
@@ -30,7 +30,7 @@ const Navigation = (props) => {
                 <div>
                     <div className='navbar__link'>
                         <div className='nav-link'><img className='link-icon' src={listIcon} alt="list" /></div>
-                        <div className='nav-link'><a href="">Full list</a></div>
+                        <div className='nav-link'><a href="">Purchases</a></div>
                     </div>
 
                     <div className='navbar__link'>

@@ -1,0 +1,23 @@
+#puchases-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+
+}
+.add-purchase {
+    height: 20%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.purchase-list {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
