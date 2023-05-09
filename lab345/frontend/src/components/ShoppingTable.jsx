@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../css/ShoppingTable.css';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 function ShoppingTable() {
     // const [data, setData] = useState([]);
@@ -54,15 +55,21 @@ function ShoppingTable() {
                         <th>Category</th>
                         <th>Price</th>
                         <th>Date</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
                     {currentItems.map(item => (
                         <tr key={item.id}>
-                        <td>{item.name}</td>
-                        <td>{item.category}</td>
-                        <td>{item.price}</td>
-                        <td>{item.date}</td>
+                            <td>{item.name}</td>
+                            <td>{item.category}</td>
+                            <td>{item.price}</td>
+                            <td>{item.date}</td>
+                            <td className='del-pur-td'>
+                                <button className='del-pur-btn'>
+                                    <DeleteIcon />
+                                </button>
+                            </td>
                         </tr>
                     ))}
                     </tbody>

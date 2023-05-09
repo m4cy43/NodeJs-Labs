@@ -8,42 +8,31 @@
     justify-content: space-around;
     align-items: flex-start;
 }
-.fn-block {
+
+.fin-table-div {
+    width: 600px;
+    overflow: auto;
+    max-height: 450px;
+    border: 1px solid rgb(100, 100, 100);
+}
+.fin-table-block {
+    width: 100%;
+}
+table {
+    width: 100%;
+    border-spacing: 0;
+}
+#finances-table th, #finances-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+#finances-table th {
+    background-color: #9269a0;
+    font-weight: bold;
     width: 50%;
-    height: 450px;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid gray;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 5px;
-    background-color: white;
 }
-.quantity-ear, .quantity-exp {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin: 5px;
-    font-size: 22px;
-}
-#earnings-money, .quantity-ear {
-    font-weight: bold;
-    color: #00b200;
-}
-#expenses-money, .quantity-exp {
-    font-weight: bold;
-    color: #d50000;
-}
-.amount-div {
-    font-size: 18px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin: 5px;
-}
-.fn-hr {
-    width: 98%;
-    border: 1px solid rgb(116, 116, 116);
+#finances-table tr {
+    background-color: #f0f0f0;
+    width: 50%;
 }

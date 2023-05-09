@@ -52,4 +52,19 @@ tr {
     background-color: #007bff;
     color: #fff;
 }
+.del-pur-td {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.del-pur-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    background-color: none;
+    border: none;
+    cursor: pointer;
+}
   

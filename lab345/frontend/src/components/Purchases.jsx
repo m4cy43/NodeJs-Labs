@@ -1,5 +1,4 @@
 import * as React from "react";
-import DataTable from "./DataTable";
 import "../css/Purchases.css";
 import AddPurchase from "./AddPurchase";
 import ShoppingTable from "./ShoppingTable";
@@ -13,6 +12,7 @@ export default function Purchases() {
       navigate("/");
     }
   }, []);
+
   return (
     <>
       <div className="content__nav-title">Purchases</div>
@@ -23,7 +23,6 @@ export default function Purchases() {
         </div>
 
         <div className="purchases-table">
-          {/* <DataTable /> */}
           <ShoppingTable />
         </div>
       </div>

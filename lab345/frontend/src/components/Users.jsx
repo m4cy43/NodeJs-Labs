@@ -100,7 +100,7 @@ function Users() {
                   onChange={onLogChange}
                 />{" "}
                 <br />
-                <button type="submit" name="login">
+                <button className="user-btn" type="submit" name="login">
                   Submit
                 </button>
               </form>
@@ -145,7 +145,7 @@ function Users() {
                   required
                 />{" "}
                 <br />
-                <button type="submit" name="register">
+                <button className="user-btn" type="submit" name="register">
                   Submit
                 </button>
               </form>
@@ -157,7 +157,7 @@ function Users() {
               Welcome, <span>{local.name}</span>!
             </h2>
             <form onSubmit={onLogout}>
-              <button type="submit" name="logout">
+              <button className="user-btn" type="submit" name="logout">
                 Log out
               </button>
             </form>

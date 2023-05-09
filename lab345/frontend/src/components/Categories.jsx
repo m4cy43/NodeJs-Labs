@@ -3,6 +3,7 @@ import AddCategory from "./AddCategory";
 import "../css/Categories.css";
 import { useNavigate } from "react-router-dom";
 import categoryService from "../services/categoryService";
+import DeleteIcon from '@mui/icons-material/Delete';
 
 function Categories() {
   const navigate = useNavigate();
@@ -10,91 +11,58 @@ function Categories() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   // test data
   const [purchases, setPurchases] = useState([
-    // {
-    //   id: 1,
-    //   name: "Bread",
-    //   category: "Food",
-    //   price: 10,
-    //   date: "2021-05-02",
-    // },
-    // {
-    //   id: 2,
-    //   name: "Milk",
-    //   category: "Food",
-    //   price: 20,
-    //   date: "2021-05-02",
-    // },
-    // {
-    //   id: 3,
-    //   name: "Butter",
-    //   category: "Food",
-    //   price: 30,
-    //   date: "2021-05-02",
-    // },
-    // {
-    //   id: 4,
-    //   name: "Bread",
-    //   category: "Food",
-    //   price: 10,
-    //   date: "2021-05-02",
-    // },
-    // {
-    //   id: 5,
-    //   name: "Milk",
-    //   category: "Food",
-    //   price: 20,
-    //   date: "2021-05-02",
-    // },
-    // {
-    //   id: 6,
-    //   name: "T-Shirt",
-    //   category: "Clothes",
-    //   price: 30,
-    //   date: "2021-05-02",
-    // },
-    // {
-    //   id: 7,
-    //   name: "Shoes",
-    //   category: "Clothes",
-    //   price: 10,
-    //   date: "2021-05-02",
-    // },
-    // {
-    //   id: 8,
-    //   name: "Trousers",
-    //   category: "Clothes",
-    //   price: 20,
-    //   date: "2021-05-02",
-    // },
-    // {
-    //   id: 9,
-    //   name: "Bread",
-    //   category: "Food",
-    //   price: 10,
-    //   date: "2021-05-02",
-    // },
-    // {
-    //   id: 10,
-    //   name: "Milk",
-    //   category: "Food",
-    //   price: 20,
-    //   date: "2021-05-02",
-    // },
-    // {
-    //   id: 11,
-    //   name: "Milk",
-    //   category: "Food",
-    //   price: 20,
-    //   date: "2021-05-02",
-    // },
-    // {
-    //   id: 12,
-    //   name: "Milk",
-    //   category: "Food",
-    //   price: 20,
-    //   date: "2021-05-02",
-    // },
+    {
+      id: 1,
+      name: "Bread",
+    },
+    {
+      id: 2,
+      name: "Milk",
+
+    },
+    {
+      id: 3,
+      name: "Butter",
+    },
+    {
+      id: 4,
+      name: "Bread",
+    },
+    {
+      id: 5,
+      name: "Milk",
+    },
+    {
+      id: 6,
+      name: "Butter",
+    },
+    {
+      id: 7,
+      name: "Shoes",
+    },
+    {
+      id: 8,
+      name: "Trousers",
+    },
+    {
+      id: 9,
+      name: "Bread",
+    },
+    {
+      id: 10,
+      name: "Milk",
+
+    },
+    {
+      id: 11,
+      name: "Butter",
+    },
+    {
+      id: 12,
+      name: "Milk",
+    },
   ]);
+
   // отримати список покупок з апі і зберегти його в стані компонента
   useEffect(() => {
     if (localStorage.getItem("user") === null) {
@@ -116,23 +84,7 @@ function Categories() {
       <hr></hr>
       <div id="categories-content">
         <div className="options">
-          <div className="dropdown">
-            <label htmlFor="category">Category: </label>
-            <select
-              id="category"
-              value={selectedCategory}
-              onChange={handleCategoryChange}
-            >
-              {categories.map((category) => (
-                <option key={category} value={category}>
-                  {category}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div>
-            <AddCategory />
-          </div>
+          <AddCategory />
         </div>
         <div className="table-div">
           <div className="table-block">
@@ -143,6 +95,7 @@ function Categories() {
                   {/* <th>Category</th> */}
                   {/* <th>Price</th> */}
                   {/* <th>Date</th> */}
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -152,6 +105,9 @@ function Categories() {
                     {/* <td>{purchase.category}</td> */}
                     {/* <td>{purchase.price}</td> */}
                     {/* <td>{purchase.date}</td> */}
+                    <td className="del-cat-td">
+                      <button className="del-cat-btn"><DeleteIcon /></button>
+                    </td>
                   </tr>
                 ))}
               </tbody>
