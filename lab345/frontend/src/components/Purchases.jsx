@@ -1,20 +1,32 @@
-import * as React from 'react';
-import DataTable from './DataTable';
-import '../css/Purchases.css';
-import AddPurchase from './AddPurchase';
-import ShoppingTable from './ShoppingTable';
+import * as React from "react";
+import DataTable from "./DataTable";
+import "../css/Purchases.css";
+import AddPurchase from "./AddPurchase";
+import ShoppingTable from "./ShoppingTable";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Purchases() {
-    return (
-        <div id="puchases-content">
-            <div className="add-purchase">
-                <AddPurchase />
-            </div>
-
-            <div className="purchases-table">
-                {/* <DataTable /> */}
-                <ShoppingTable />
-            </div>
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (localStorage.getItem("user") === null) {
+      navigate("/");
+    }
+  }, []);
+  return (
+    <>
+      <div className="content__nav-title">Purchases</div>
+      <hr></hr>
+      <div id="puchases-content">
+        <div className="add-purchase">
+          <AddPurchase />
         </div>
-    );
+
+        <div className="purchases-table">
+          {/* <DataTable /> */}
+          <ShoppingTable />
+        </div>
+      </div>
+    </>
+  );
 }
