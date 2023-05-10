@@ -21,7 +21,7 @@ router
   .route("/")
   .get(authProtection, getFinanceAll)
   .post(authProtection, setFinance);
-// GET /api/v1/fin?page=_&items=_
+// GET /api/v1/fin/q?page=_&items=_
 router.route("/q").get(authProtection, getFinanceQ);
 // GET /api/v1/fin/:uuid
 // DELETE /api/v1/fin/:uuid

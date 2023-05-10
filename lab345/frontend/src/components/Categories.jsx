@@ -3,7 +3,7 @@ import AddCategory from "./AddCategory";
 import "../css/Categories.css";
 import { useNavigate } from "react-router-dom";
 import categoryService from "../services/categoryService";
-import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteIcon from "@mui/icons-material/Delete";
 
 function Categories() {
   const navigate = useNavigate();
@@ -18,7 +18,6 @@ function Categories() {
     {
       id: 2,
       name: "Milk",
-
     },
     {
       id: 3,
@@ -51,7 +50,6 @@ function Categories() {
     {
       id: 10,
       name: "Milk",
-
     },
     {
       id: 11,
@@ -76,6 +74,13 @@ function Categories() {
 
   const handleCategoryChange = (event) => {
     setSelectedCategory(event.target.value);
+  };
+
+  const deleteCat = (id) => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    categoryService
+      .deleteCategory(id, user.token)
+      .then(window.location.reload(true));
   };
 
   return (
@@ -106,7 +111,14 @@ function Categories() {
                     {/* <td>{purchase.price}</td> */}
                     {/* <td>{purchase.date}</td> */}
                     <td className="del-cat-td">
-                      <button className="del-cat-btn"><DeleteIcon /></button>
+                      <button
+                        className="del-cat-btn"
+                        onClick={() => {
+                          deleteCat(purchase._id);
+                        }}
+                      >
+                        <DeleteIcon />
+                      </button>
                     </td>
                   </tr>
                 ))}

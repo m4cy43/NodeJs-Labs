@@ -1,14 +1,23 @@
 const asyncHandler = require("express-async-handler");
 
 const Finance = require("../models/financeModel");
+const Purchase = require("../models/purchaseModel");
 
 // @desc    Get all finances
 // @route   GET /api/v1/fin
 // @access  Private
 const getFinanceAll = asyncHandler(async (req, res) => {
-  const fin = await Finance.find({ user: req.user.id }).sort({
-    updatedAt: "desc",
-  });
+  const fin = await Finance.find({ user: req.user.id })
+    .populate("user")
+    .populate({
+      path: "purchase",
+      populate: {
+        path: "category",
+      },
+    })
+    .sort({
+      updatedAt: "desc",
+    });
 
   res.status(200).json(fin);
 });
@@ -17,7 +26,14 @@ const getFinanceAll = asyncHandler(async (req, res) => {
 // @route   GET /api/v1/fin/:id
 // @access  Private
 const getFinanceId = asyncHandler(async (req, res) => {
-  const fin = await Finance.findById(req.params.id);
+  const fin = await Finance.findById(req.params.id)
+    .populate("user")
+    .populate({
+      path: "purchase",
+      populate: {
+        path: "category",
+      },
+    });
 
   res.status(200).json(fin);
 });
@@ -38,7 +54,14 @@ const getFinanceQ = asyncHandler(async (req, res) => {
       updatedAt: "desc",
     })
     .skip(page)
-    .limit(items);
+    .limit(items)
+    .populate("user")
+    .populate({
+      path: "purchase",
+      populate: {
+        path: "category",
+      },
+    });
 
   res.status(200).json(fin);
 });
@@ -119,6 +142,7 @@ const deleteFinance = asyncHandler(async (req, res) => {
   }
 
   await Finance.findByIdAndDelete(req.params.id);
+  await Purchase.findByIdAndDelete(fin.purchase);
 
   res.status(200).json({ id: req.params.id });
 });

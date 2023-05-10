@@ -6,7 +6,7 @@ const Purchase = require("../models/purchaseModel");
 // @route   GET /api/v1/pur
 // @access  Private
 const getPurchaseAll = asyncHandler(async (req, res) => {
-  const pur = await Purchase.find({});
+  const pur = await Purchase.find().populate("category");
 
   res.status(200).json(pur);
 });
@@ -15,8 +15,7 @@ const getPurchaseAll = asyncHandler(async (req, res) => {
 // @route   GET /api/v1/pur/:id
 // @access  Private
 const getPurchaseId = asyncHandler(async (req, res) => {
-  const pur = await Purchase.findById(req.params.id);
-
+  const pur = await Purchase.findById(req.params.id).populate("category");
   res.status(200).json(pur);
 });
 

@@ -10,7 +10,6 @@ const getAllRows = async (token) => {
     },
   };
   const response = await axios.get(FIN_API_URL, config);
-
   return response.data;
 };
 
@@ -54,11 +53,9 @@ const deleteRow = async (id, token) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  const response1 = await axios.post(FIN_API_URL + id, config);
-  await axios.delete(PUR_API_URL + response1.data._id, config);
-  const response2 = await axios.delete(FIN_API_URL + id, config);
+  const response = await axios.delete(FIN_API_URL + id, config);
 
-  return response2.data;
+  return response.data;
 };
 
 const finPurService = {
