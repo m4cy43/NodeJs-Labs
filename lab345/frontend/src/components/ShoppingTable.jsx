@@ -6,7 +6,6 @@ import finPurService from "../services/finPurService";
 
 function ShoppingTable() {
   const navigate = useNavigate();
-  // const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(5);
 

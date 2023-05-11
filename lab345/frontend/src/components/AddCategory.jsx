@@ -42,7 +42,6 @@ function AddCategory() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [category, setCategory] = useState({ name: "" });
-  const [flag, setFlag] = useState(0);
   const { name } = category;
   const onChange = (e) => {
     setCategory((prevState) => ({
