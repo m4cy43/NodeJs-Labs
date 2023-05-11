@@ -8,7 +8,6 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useState, useEffect } from "react";
 import categoryService from "../services/categoryService";
 import finPurService from "../services/finPurService";
-import { alertClasses } from "@mui/material";
 
 const boxStyle = {
   position: "absolute",

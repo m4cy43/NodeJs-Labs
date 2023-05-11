@@ -5,7 +5,6 @@ import categoryIcon from "../images/folders.svg";
 import walletIcon from "../images/wallet.svg";
 import userIcon from "../images/user.svg";
 import "../css/Navigation.css";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const menuItems = [

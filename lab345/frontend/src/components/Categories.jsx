@@ -8,58 +8,6 @@ import DeleteIcon from "@mui/icons-material/Delete";
 function Categories() {
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  // test data
-  const [purchases, setPurchases] = useState([
-    {
-      id: 1,
-      name: "Bread",
-    },
-    {
-      id: 2,
-      name: "Milk",
-    },
-    {
-      id: 3,
-      name: "Butter",
-    },
-    {
-      id: 4,
-      name: "Bread",
-    },
-    {
-      id: 5,
-      name: "Milk",
-    },
-    {
-      id: 6,
-      name: "Butter",
-    },
-    {
-      id: 7,
-      name: "Shoes",
-    },
-    {
-      id: 8,
-      name: "Trousers",
-    },
-    {
-      id: 9,
-      name: "Bread",
-    },
-    {
-      id: 10,
-      name: "Milk",
-    },
-    {
-      id: 11,
-      name: "Butter",
-    },
-    {
-      id: 12,
-      name: "Milk",
-    },
-  ]);
 
   // отримати список покупок з апі і зберегти його в стані компонента
   useEffect(() => {
@@ -69,12 +17,8 @@ function Categories() {
     const user = JSON.parse(localStorage.getItem("user"));
     categoryService
       .getAllCategories(user.token)
-      .then((res) => setPurchases(res));
+      .then((res) => setCategories(res));
   }, []);
-
-  const handleCategoryChange = (event) => {
-    setSelectedCategory(event.target.value);
-  };
 
   const deleteCat = (id) => {
     const user = JSON.parse(localStorage.getItem("user"));
@@ -97,19 +41,13 @@ function Categories() {
               <thead>
                 <tr>
                   <th>Name</th>
-                  {/* <th>Category</th> */}
-                  {/* <th>Price</th> */}
-                  {/* <th>Date</th> */}
                   <th></th>
                 </tr>
               </thead>
               <tbody>
-                {purchases.map((purchase) => (
+                {categories.map((purchase) => (
                   <tr key={purchase._id}>
                     <td>{purchase.name}</td>
-                    {/* <td>{purchase.category}</td> */}
-                    {/* <td>{purchase.price}</td> */}
-                    {/* <td>{purchase.date}</td> */}
                     <td className="del-cat-td">
                       <button
                         className="del-cat-btn"
